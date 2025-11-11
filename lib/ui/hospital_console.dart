@@ -9,7 +9,7 @@ class HospitalConsoleUI {
   late HospitalManaging system ;
   final HospitalDataManager dataManager;
 
-  HospitalConsoleUI({String dataFilePath = '../data/hospital_data.json'})
+  HospitalConsoleUI({required String dataFilePath})
       : dataManager = HospitalDataManager(filePath: dataFilePath);
 
   Future<void> start() async {
@@ -37,7 +37,6 @@ class HospitalConsoleUI {
       print('3. Show active patients');
       print('4. Show room & bed availability');
       print('5. Search patient by name');
-      print('6. Save data manually');
       print('0. Exit');
       stdout.write('Select: ');
       final choice = stdin.readLineSync()?.trim();

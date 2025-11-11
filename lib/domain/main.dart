@@ -1,4 +1,5 @@
 import '../ui/hospital_console.dart';
 void main(){
-  HospitalConsoleUI().start();
+  String filePath = '../data/hospital_data.json';
+  HospitalConsoleUI(dataFilePath: filePath).start();
 }
