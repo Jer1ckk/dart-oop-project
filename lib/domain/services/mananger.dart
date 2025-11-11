@@ -3,22 +3,6 @@ import '../models/bed.dart';
 import '../models/enum.dart';
 import '../models/patient.dart';
 
-class RoomTypeStats {
-  final RoomType type;
-  int rooms = 0;
-  int available = 0;
-  int occupied = 0;
-  int total = 0;
-
-  RoomTypeStats(this.type);
-
-  void addCounts(int rooms, int available, int occupied, int total) {
-    this.rooms += rooms;
-    this.available += available;
-    this.occupied += occupied;
-    this.total += total;
-  }
-}
 
 class HospitalManagement {
   final List<Room> emergencyRoom = [];
@@ -191,5 +175,23 @@ class HospitalManagement {
 
   void assignLoadedPatient(Patient patient) {
     activePatient.add(patient);
+  }
+}
+
+
+class RoomTypeStats {
+  final RoomType type;
+  int rooms = 0;
+  int available = 0;
+  int occupied = 0;
+  int total = 0;
+
+  RoomTypeStats(this.type);
+
+  void addCounts(int rooms, int available, int occupied, int total) {
+    this.rooms += rooms;
+    this.available += available;
+    this.occupied += occupied;
+    this.total += total;
   }
 }
