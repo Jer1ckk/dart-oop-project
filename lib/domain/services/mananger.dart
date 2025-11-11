@@ -20,31 +20,13 @@ class RoomTypeStats {
   }
 }
 
-class HospitalManaging {
+class HospitalManagement {
   final List<Room> emergencyRoom = [];
   final List<Room> icuRoom = [];
   final List<Room> generalRoom = [];
+  final List<Patient> activePatient = [];
 
-  // int emergencyRoomCount = 5;
-  // int icuRoomCount = 10;
-  // int generalRoomCount = 20;
-
-  // int emergencyRoomNumber = 100;
-  // int icuRoomNumber = 200;
-  // int generalRoomNumber = 300;
-
-  // HospitalManaging() {
-  //   for (int i = 0; i < emergencyRoomCount; i++) {
-  //     emergencyRoom.add(EmergencyRoom(roomNumber: emergencyRoomNumber++));
-  //   }
-  //   for (int i = 0; i < icuRoomCount; i++) {
-  //     icuRoom.add(ICURoom(roomNumber: icuRoomNumber++));
-  //   }
-  //   for (int i = 0; i < generalRoomCount; i++) {
-  //     generalRoom.add(GeneralRoom(roomNumber: generalRoomNumber++));
-  //   }
-  // }
-  HospitalManaging({required List<Room> loadedRooms}) {
+  HospitalManagement({required List<Room> loadedRooms}) {
     initializeFromLoadedRooms(loadedRooms);
   }
 
@@ -63,8 +45,6 @@ class HospitalManaging {
       }
     }
   }
-
-  final List<Patient> activePatient = [];
 
   List<Room> get allRoom => [...emergencyRoom, ...icuRoom, ...generalRoom];
 

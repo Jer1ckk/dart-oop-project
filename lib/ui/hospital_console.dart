@@ -6,30 +6,28 @@ import '../data/data_provider.dart';
 import '../domain/models/room.dart';
 
 class HospitalConsoleUI {
-  late HospitalManaging system ;
+  late HospitalManagement system ;
   final HospitalDataManager dataManager;
 
   HospitalConsoleUI({required String dataFilePath})
       : dataManager = HospitalDataManager(filePath: dataFilePath);
 
   Future<void> start() async {
-    // ===== LOAD DATA ON START =====
+
     try {
       final loadedData = await dataManager.loadData();
       final patients = loadedData['patients'] as List<Patient>;
       final rooms = loadedData['rooms'] as List<Room>;
 
-      system = HospitalManaging(loadedRooms: rooms);
+      system = HospitalManagement(loadedRooms: rooms);
       for (var p in patients) {
         system.assignLoadedPatient(p);
       }
 
-      print('Data loaded from ${dataManager.filePath}');
     } catch (e) {
       print('Failed to load data: $e');
     }
 
-    // ===== MAIN MENU =====
     while (true) {
       print('\n=== Hospital Management System ===');
       print('1. Add new patient');
@@ -72,13 +70,10 @@ class HospitalConsoleUI {
   Future<void> saveData() async {
     try {
       await dataManager.saveData(system.activePatient, system.allRoom);
-      //print('Data saved successfully.');
     } catch (e) {
       print('Error saving data: $e');
     }
   }
-
-  // ===== MENU ACTIONS =====
 
   void addNewPatient() {
     final name = inputEmpty('Enter patient name: ');
@@ -173,8 +168,6 @@ class HospitalConsoleUI {
     }
   }
 
-  // ===== INPUT HELPERS =====
-
   Gender inputGender() {
     while (true) {
       stdout.write('Gender (Male/Female): ');
@@ -194,6 +187,7 @@ class HospitalConsoleUI {
     }
   }
 
+  //AI Generate
   PatientCode inputPatientCode({String prompt = 'Patient code (Black/Red/Yellow/Green): '}) {
     while (true) {
       stdout.write(prompt);

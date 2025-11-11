@@ -6,6 +6,7 @@ import '../domain/models/patient.dart';
 import '../domain/models/room.dart';
 import '../domain/models/enum.dart';
 
+//AI generate
 class HospitalDataManager {
   final String filePath;
 
@@ -19,7 +20,6 @@ class HospitalDataManager {
 
     final file = File(filePath);
     await file.writeAsString(jsonEncode(data), flush: true);
-    //print('Data saved to $filePath');
   }
 
   Future<Map<String, dynamic>> loadData() async {
